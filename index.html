@@ -8,43 +8,18 @@
 
 <body>
     <form onsubmit="return false;">
-        <input id="val" type="number" maxlength="4" minlength="1" value="89">
-        <button onClick="calc();">Посчитать</button>
-        <textarea name="" id="output" cols="30" rows="10"></textarea>
+        <input id="forEncryption" type="number" pattern="^[ 0-9]+$" value="89">
+        <button onClick="encryption();">Посчитать</button>
+    </form>
+    <textarea name="" id="output" cols="30" rows="10"></textarea>
+    <form onsubmit="return false;">
+        <input id="forDecryption" type="text" value="0111001101">
+        <button onClick="decryption();">Посчитать</button>
     </form>
 </body>
+<script src="script.js"></script>
+<script src="baffle.min.js"></script>
 <script>
-function calc() {
-    var value, bin_value, bin_len, num_ctrl_char, changed_bin, place = [];
-    value = Number(document.getElementById('val').value);
-    // Translations into binary system
-    bin_value = value.toString(2);
-    //document.getElementById('output').value = "Число в бинарном виде:" + bin_value + "; \n\nДлина введенного числа: " + bin_value.length "; \n\nНеобходимое количество контрольных бит: ";
-    // Split and reverse String !(without join)
-    bin_value = (String(bin_value)).split("").reverse();
-    // Calculate the number of control characters
-    // r = n - k = [log{(k + 1 +[log(k + 1)]}]
-    num_ctrl_char = Math.round(Math.log2(bin_value.length + 1 + Math.round(Math.log2(bin_value.length + 1))));
-    // Add control characters
-    for (var i = 0; i < num_ctrl_char; i++) {
-        var current = Math.pow(2, i) - 1;
-        place.push(current);
-        bin_value.splice(current, 0, '0');
-    } console.log(bin_value);
-
-    for (var m = 0; m < place.length; m++) {
-    	var new_array = [];
-        for (var i = place[m]; i < bin_value.length ; i += (place[m] + 1) * 2) {
-            var array = bin_value.slice(i, i + place[m] + 1);
-            new_array = new_array.concat(array);
-        }
-        console.log((m + 1) + " concat array: " + new_array);
-        var sum = 0;
-        new_array.forEach(function(value) { sum += Number(value);});
-        bin_value[place[m]] = sum & 1;
-    }
-    console.log(""+bin_value.join(""));
-}
 </script>
 
 </html>
