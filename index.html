@@ -4,21 +4,28 @@
 <head>
     <meta charset="utf-8">
     <title>Пример реализации калькулятора кода Хэмминга на JS</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Amita" rel="stylesheet">
 </head>
 
-<body>
-    <form onsubmit="return false;">
-        <input id="forEncryption" type="number" pattern="^[ 0-9]+$" value="89">
-        <button onClick="encryption();">Посчитать</button>
-    </form>
-    <textarea name="" id="output" cols="30" rows="10"></textarea>
-    <form onsubmit="return false;">
-        <input id="forDecryption" type="text" value="0111001101">
-        <button onClick="decryption();">Посчитать</button>
-    </form>
+<body id="particles-js">
+    <!-- particles.js container -->
+    <div class="container">
+    	<h3>Hamming code</h3>
+        <form onsubmit="return false;">
+            <input id="forEncryption" type="number" pattern="^[ 0-9]+$" value="89">
+            <button onClick="encryption();">Encryption</button>
+        </form>
+        <form onsubmit="return false;">
+            <input id="forDecryption" type="text" value="0111001101">
+            <button onClick="decryption();">Decryption</button>
+        </form>
+        <textarea name="" id="output" cols="30" rows="10" readonly></textarea>
+    </div>
 </body>
-<script src="script.js"></script>
-<script src="baffle.min.js"></script>
+<script src="js/hamming.js"></script>
+<script src="js/particles.min.js"></script>
+<script src="js/app.js"></script>
 <script>
 </script>
 

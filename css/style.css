@@ -1,0 +1,39 @@
+body {
+    background: #000;
+    text-align: center;
+    overflow: hidden;
+}
+
+h3 {
+    font-family: 'Amita', cursive;
+    margin-bottom: 0;
+}
+
+.container {
+    position: absolute;
+    left: 33%;
+    top: 10%;
+    background: rgb(255, 255, 255);
+    width: 500px;
+}
+
+input,
+textarea {
+    width: 80%;
+    font-family: 'Amita', cursive;
+    padding-left: 20px;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+}
+
+button {
+    border: 1px solid #ccc;
+    background: #fff;
+    border-top: none;
+    padding: 5px 100px;
+}
+
+button:hover {
+    background: #ccc;
+    color: #fff;
+}

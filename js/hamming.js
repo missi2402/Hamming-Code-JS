@@ -1,5 +1,6 @@
 function encryption() {
     var value, binValue, numberOfControlPoints, place = [];
+    clear();
     value = Number(document.getElementById('forEncryption').value);
     // Translations into binary system
     binValue = value.toString(2);
@@ -26,6 +27,7 @@ function encryption() {
         binValue[place[m]] = sum & 1; // even parity
     }
     rewrite("Закодированное число   : ", binValue.join(""));
+    let b = window.baffle('#output').start();
 }
 
 function decryption() {
@@ -33,6 +35,7 @@ function decryption() {
         valueOfControlPoints = [],
         valueForCheckControlPoints = [],
         errorPlace = 0;
+    clear();
     binValue = document.getElementById('forDecryption').value;
     // Split String !(without join and reverse)
     binValue = String(binValue).split("");
@@ -59,17 +62,17 @@ function decryption() {
         }
         valueForCheckControlPoints[m] = sum & 1;
         rewrite("Контрольный бит должен быть равен: ", valueForCheckControlPoints[m]);
-        console.log(valueForCheckControlPoints[m]); 
+        console.log(valueForCheckControlPoints[m]);
         console.log(valueOfControlPoints[m]);
-        if(valueForCheckControlPoints[m] != valueOfControlPoints[m]) {
+        if (valueForCheckControlPoints[m] != valueOfControlPoints[m]) {
             console.log("place:");
-            console.log(place[m]+1);
+            console.log(place[m] + 1);
             errorPlace = errorPlace + place[m] + 1;
-            console.log("error:"+errorPlace);
+            console.log("error:" + errorPlace);
         }
-        if(errorPlace == 0) {
+        if (errorPlace == 0) {
             rewrite("Ошибок не обнаружено!");
-        }else {
+        } else {
             rewrite("Ошибка в числе под номером: " + errorPlace);
         }
     }
@@ -91,4 +94,8 @@ function rewrite() {
             document.getElementById('output').value = textOut + arguments[j];
         }
     }
+}
+
+function clear() {
+    document.getElementById('output').value = '';
 }
