@@ -70,12 +70,13 @@ function decryption() {
             errorPlace = errorPlace + place[m] + 1;
             console.log("error:" + errorPlace);
         }
-        if (errorPlace == 0) {
-            rewrite("Ошибок не обнаружено!");
-        } else {
-            rewrite("Ошибка в числе под номером: " + errorPlace);
-        }
     }
+    if (errorPlace == 0) {
+        rewrite("Ошибок не обнаружено!");
+    } else {
+        rewrite("Ошибка в числе под номером: " + errorPlace);
+    }
+
 }
 
 function findControlPoints(length) {
